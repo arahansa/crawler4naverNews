@@ -1,0 +1,58 @@
+<html ng-app="testApp">
+<head>
+	<title>11테스트 HTML </title>
+	<meta charset='utf-8'>
+	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script src="./angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular-sanitize.min.js"></script>
+	<style>
+		*{
+			font-family: '돋움';
+			font-size: 12px;
+		}
+	</style>
+</head>
+<body ng-controller="replyController" ng-init="init()">
+	<h3>테스트 HTML </h3>
+<table>
+	<tr>
+		<td>기사</td>
+		<td>언론사</td>
+		<td>시간</td>
+		<td>설명</td>
+	</tr>
+	<tr  ng-repeat="article in articles" ><td ng-bind-html="article.aLink|| sanitize "></td><td>{{article.press}}</td><td>{{article.time}}</td><td>{{article.desc}}</td></tr>
+</table>
+
+<script>
+var app = angular.module('testApp',  ['ngSanitize']);
+app.controller('replyController', function ($scope, $http) {
+	$scope.init = init;
+	$scope.articles = 
+[{"aLink":"<a href=\"http://isplus.live.joins.com/news/article/aid.asp?aid=19022576\" target=\"_blank\" class=\"tit\" onclick=\"\"><b>아프리카TV</b> 스베누 인수…스타2 프로팀 창단</a>","press":"일간스포츠","time":"11시간전","desc":"[ 가 스타크래프트2 프로팀을 창단한다. 서수길 대표는 지난 23일 서울 대치동 프릭업 스튜디오에서 열린 ‘VANT36.5 대국민 스타리그(이하 대국민 스타리그)' 결승전 직후 ㅇ로해 e스포츠 운영안을 발표했다. 서수길 대표. 서 대표는 아프리카 TV의..."},
+{"aLink":"<a href=\"http://news1.kr/articles/?2555294\" target=\"_blank\" class=\"tit\" onclick=\"\">달샤벳 우희, <b>아프리카TV</b> BJ 변신 '소탈한 매력'</a>","press":"뉴스1","time":"12시간전","desc":"(서울=뉴스1스타) 박건욱 기자 = 달샤벳 우희가 를 통해 BJ로 변신했다. 우희는 지난 23일 밤 방송된 ‘데일리 달샤벳’ 방송에서 ‘달샤벳 우희와 달콤한 심야토크’라는 타이틀로 시청자들과 소통했다. 이날 방송에서 우희는 “친밀한 모습을 보여드리기..."},
+{"aLink":"<a href=\"http://www.wikitree.co.kr/main/news_view.php?id=247576\" target=\"_blank\" class=\"tit\" onclick=\"\"><b>아프리카TV</b> BJ윰댕 \"병원에서 신장이식 권해\"</a>","press":"위키트리","time":"23시간전","desc":"이하 윰댕 인스타그램 인기 BJ(방송진행자) 윰댕(이유미·31)이 투병 사실을 고백했다. 24일 BJ윰댕은 자신의 방송국 공지사항에 \"걱정해줘서 고마워요\"라는 제목으로 장문의 글을 올렸다. BJ윰댕은 \"몇 달 전부터 심한 두통, 안압, 울렁거림과 피곤. 제 신장이..."},{"aLink":"<a href=\"http://www.brainbox.co.kr/news/40883\" target=\"_blank\" class=\"tit\" onclick=\"\"><b>아프리카TV</b> 스타크래프트 II 프로팀 창단!대국민 스타리그 결승전에서 깜짝 발표</a>","press":"브레인박스벤치마크","time":"12시간전","desc":"‘불사조’ 김정우, ‘혁명가’ 김택용 상대로 맞춤 전략 선보이며 대국민 스타리그 최종 우승 올해 대국민 스타리그 2회 추가 개최, e스포츠 프로팀 신설 등 ‘깜짝’ 발표 소프트웨어 개발 및 퍼블리싱 업계의 선두주자인 블리자드 엔터테인먼트(Blizzard Entertainment..."},{"aLink":"<a href=\"http://www.acrofan.com/ko-kr/live/news/20160125/00000029\" target=\"_blank\" class=\"tit\" onclick=\"\">개그맨 정종철, 김대균 토익킹 아프리카 TV 방송 출연</a>","press":"아크로팬","time":"21시간전","desc":"EBS FM 토익킹 진행자 김대균과 옥동자 (정종철)이 함께 26일 밤 9시 20분, 인터넷 방송을 한다. 개그맨일 뿐 아니라 최근 음반 프로듀서로 변신해 국내 최초 입 연주 신곡인 'FEEL IT'을 발표한 정종철은 그동안 영어공부를 하며 익힌 노하우를 공개하고, 토익 공부를..."},{"aLink":"<a href=\"http://sports.chosun.com/news/ntype.htm?id=201601250100252240016985&amp;servicedate=20160124\" target=\"_blank\" class=\"tit\" onclick=\"\"><b>아프리카TV</b>, '스타2' 스베누팀 인수해 재창단</a>","press":"스포츠조선","time":"1일전","desc":"서수길 대표가 23일 '대국민 스타리그' 결승전에 앞서 '스타크래프트2'팀과 '하스스톤'팀의 창단 계획을 설명하고 있다. 모기업 문제로 존폐 여부를 걱정해야 했던 스베누 '스타크래프트2'팀이 회생의 길을 걷게 됐다. 라이브 소셜미디어 서수길 대표는 23일..."},{"aLink":"<a href=\"http://sports.khan.co.kr/news/sk_index.html?cat=view&amp;art_id=201601241125513&amp;sec_id=540101&amp;pt=nv\" target=\"_blank\" class=\"tit\" onclick=\"\">달샤벳, <b>아프리카TV</b> 통해 11일 동안 개인방송 출격</a>","press":"스포츠경향","time":"1일전","desc":"걸그룹 달샤벳이 개인방송 사이트 ‘’에서 <데일리 달샤벳>의 첫 방송을 시작했다. 최근 9번째 미니앨범 <내추럴니스>로 컴백한 달샤벳은 지난 22일부터 11일 동안 를 통해 <데일리 달샤벳>((afreeca.com/dalshabetup)이라는 제목으로 매일 생중계를 진행한다...."},{"aLink":"<a href=\"http://www.etnews.com/20160124000065\" target=\"_blank\" class=\"tit\" onclick=\"\"><b>아프리카TV</b>, 스타크래프트 II 프로팀 신설 등 e스포츠 운영안 발표</a>","press":"전자신문","time":"1일전","desc":"대국민 스타리그 결승전 <사진 > 서수길 대표는 지난 23일 ‘VANT36.5 대국민 스타리그(이하 대국민 스타리그)’ 결승전에서 e스포츠 운영안을 공개했다. e스포츠 프로팀 신설, 대국민 스타리그 확대, 새로운 프로게이머 발굴 방식 도입 등이 핵심이다. 프로게임단..."},{"aLink":"<a href=\"http://news.heraldcorp.com/view.php?ud=20160125000657\" target=\"_blank\" class=\"tit\" onclick=\"\">日 아프리카 TV ‘니코니코 동화’…혐한ㆍ혐중으로 급부상</a>","press":"헤럴드경제","time":"19시간전","desc":"일본판 로 불리는 ‘니코니코 동화(ニコニコ動)가 혐한(嫌韓)ㆍ혐중(嫌中) 콘텐츠를 이용해 새로운 미디어채널로 부상하고 있다. 마이니치(每日)신문은 25일 니코니코동화가 제약없는 제작환경을 통해 새로운 미디어채널로 부상했다고 보도했다. 니코니코동화는 동영상에..."},{"aLink":"<a href=\"http://www.hankyung.com/news/app/newsview.php?aid=201601248933v\" target=\"_blank\" class=\"tit\" onclick=\"\">위기에 빠진 스베누 프로팀, <b>아프리카TV</b>가 인수한다</a>","press":"한국경제","time":"1일전","desc":"가 스베누의 '스타크래프트2' e스포츠 팀을 인수한다. 서수길 대표는 23일 대치동 프릭업 스튜디오에서 막을 내린 VANT36.5 대국민 스타리그 결승전에서 e스포츠 지원에 대한 2016년 의 계획을 밝혔다. 이 자리에서 서 대표는 총 4종의 계획을 발표했다...."}];
+
+
+	function init(){
+		console.log("init");
+		
+	}
+
+});
+
+app.filter("sanitize", ['$sce', function($sce) {
+  return function(htmlCode){
+    return $sce.trustAsHtml(htmlCode);
+}
+}]);
+
+$(function(){
+	console.log("console");
+});
+</script>
+
+
+
+</body>
+</html>
